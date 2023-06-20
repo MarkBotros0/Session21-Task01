@@ -11,18 +11,7 @@ const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLoc
 
   const { themeMode } = useContext(ThemeModeContext)
 
-
-  const theme = createTheme({
-    components: {
-      MuiOutlinedInput: {
-        styleOverrides: {
-          root: {
-            borderRadius: '0px'
-          },
-        },
-      },
-    },
-  });
+  //first input styles
   const theme1 = createTheme({
     components: {
       MuiOutlinedInput: {
@@ -36,6 +25,18 @@ const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLoc
     },
   });
 
+  //second input styles
+  const theme = createTheme({
+    components: {
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            borderRadius: '0px'
+          },
+        },
+      },
+    },
+  });
 
   return (
     <Box >
@@ -65,7 +66,7 @@ const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLoc
         </Grid>
         <Grid item xs={3}>
           <ThemeProvider theme={theme}>
-            <TextField placeholder="Filter by location" fullWidth value={location} onChange={(e)=>setLocation(e.target.value)} sx={{
+            <TextField placeholder="Filter by location" fullWidth value={location} onChange={(e) => setLocation(e.target.value)} sx={{
               bgcolor: themes[themeMode].bgColor.component,
               '& .MuiInputBase-input': {
                 fontSize: '20px',

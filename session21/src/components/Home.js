@@ -10,14 +10,17 @@ import MyModal from './MyModal.js'
 
 const Home = () => {
   const [data, setData] = useState([])
-  const [offset, setOffset] = useState(0)
+  const [offset, setOffset] = useState(0) //pagination
   const [searchQuery, setSearchQuery] = useState('')
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState('') //filter
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [modalOpen, setModalOpen] = useState(false);
+  
+  //modal control
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
 
+  //update screenwidth state
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -28,6 +31,7 @@ const Home = () => {
     };
   }, []);
 
+  //theme context import
   const { themeMode } = useContext(ThemeModeContext)
 
 
@@ -38,17 +42,19 @@ const Home = () => {
       const response = await fetch(url, { headers: { 'Authorization': 'Bearer your_token_here' }, method: "GET" })
       const jsonData = await response.json()
       setData([...data, ...jsonData.jobs_results])
-      setOffset(offset => offset + 10)
+      setOffset(offset => offset + 10)  //pagination
     } catch (error) {
       console.log(error)
     }
   }
 
+  //onclick search
   const handleSearch = () => {
     fetchData()
     resetData()
   }
 
+  //for new search
   const resetData = () => {
     setData([])
   }

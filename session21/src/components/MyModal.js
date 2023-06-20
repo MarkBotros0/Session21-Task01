@@ -8,6 +8,7 @@ import { ThemeModeContext } from './ThemeProvider';
 import CheckBox from './CheckBox';
 import { useContext } from 'react';
 
+// modal style
 const style = {
     position: 'absolute',
     top: '50%',
@@ -25,6 +26,7 @@ export default function MyModal({ handleSearch, location, setLocation, open, han
 
     const { themeMode } = useContext(ThemeModeContext)
 
+    // textfield style
     const theme = createTheme({
         components: {
             MuiOutlinedInput: {
