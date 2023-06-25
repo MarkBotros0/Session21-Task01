@@ -39,7 +39,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const apiKey = "3f227aedb9ad2ae83f6342ed25097aa8d0ec8b4b5340a9145e591b180ccd7ee9"
-      const url = `https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_jobs&q=${searchQuery}&start=${offset}&api_key=${apiKey}&location=${location}`
+      const url = `https://cors-anywhere.herokuapp.com/https://serpapi.com/search.json?engine=google_jobs&q=${searchQuery}&start=${offset}&api_key=${apiKey}&location=${location}&chips=employment_type:${isChecked ? "FULLTIME" : ""}`
       const response = await fetch(url, { headers: { 'Authorization': 'Bearer your_token_here' }, method: "GET" })
       const jsonData = await response.json()
       setData([...data, ...jsonData.jobs_results])
@@ -66,7 +66,7 @@ const Home = () => {
         {screenWidth > 768 ?
           <FilterBar isChecked={isChecked} setIsChecked={setIsChecked} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} location={location} setLocation={setLocation} /> :
           <>
-            <MobileFilterBar  handleOpen={handleOpen} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <MobileFilterBar handleOpen={handleOpen} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <MyModal isChecked={isChecked} setIsChecked={setIsChecked} handleSearch={handleSearch} location={location} setLocation={setLocation} open={modalOpen} handleClose={handleClose} />
           </>
         }

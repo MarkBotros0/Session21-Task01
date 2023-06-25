@@ -65,9 +65,9 @@ const BpCheckedIcon = styled(BpIcon)({
 });
 
 
-const CheckBox = () => {
+const CheckBox = ({isChecked, setIsChecked}) => {
     return (
-        <BpCheckbox />
+        <BpCheckbox value={isChecked} onChange={() => setIsChecked(!isChecked)} />
     );
 }
 

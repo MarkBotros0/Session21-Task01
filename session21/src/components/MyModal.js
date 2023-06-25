@@ -22,11 +22,10 @@ const style = {
     flexDirection: "column"
 };
 
-export default function MyModal({ handleSearch, location, setLocation, open, handleClose }) {
+export default function MyModal({ handleSearch, location, setLocation, open, handleClose, isChecked, setIsChecked }) {
 
     const { themeMode } = useContext(ThemeModeContext)
 
-    // textfield style
     const theme = createTheme({
         components: {
             MuiOutlinedInput: {
@@ -67,14 +66,15 @@ export default function MyModal({ handleSearch, location, setLocation, open, han
                                         }
                                     }
                                 }} />
-                            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center",flexDirection:"column",bgcolor: themes[themeMode].bgColor.component }}>
-                                <Box sx={{ display: "flex",alignItems:"center",my:"40px",justifyContent:"flex-start",width:"100%",ml:"80px" }}>
-                                    <CheckBox />
+                            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", bgcolor: themes[themeMode].bgColor.component }}>
+                                <Box sx={{ display: "flex", alignItems: "center", my: "40px", justifyContent: "flex-start", width: "100%", ml: "80px" }}>
+                                    <CheckBox isChecked={isChecked} setIsChecked={isChecked} />
                                     <Typography sx={{ fontWeight: "bold", fontSize: "17px", color: themes[themeMode].text.header }}>Full Time Only</Typography>
                                 </Box>
-                                <Box sx={{ width:"80%" }}>
-                                    <Button fullWidth onClick={handleSearch} sx={{ mb:"20px",
-                                        backgroundColor: "#5964E0", padding: "15px 30px", fontSize: "18px", textTransform: "capitalize",fontWeight:"bold",
+                                <Box sx={{ width: "80%" }}>
+                                    <Button fullWidth onClick={handleSearch} sx={{
+                                        mb: "20px",
+                                        backgroundColor: "#5964E0", padding: "15px 30px", fontSize: "18px", textTransform: "capitalize", fontWeight: "bold",
                                         '&:hover': { backgroundColor: "#939bf4" },
                                     }} variant='contained'> Search </Button>
                                 </Box>

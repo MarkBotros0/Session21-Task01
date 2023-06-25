@@ -7,7 +7,7 @@ import { themes } from '../misc/themes'
 import { ThemeModeContext } from './ThemeProvider';
 
 
-const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLocation }) => {
+const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLocation, isChecked,setIsChecked }) => {
 
   const { themeMode } = useContext(ThemeModeContext)
 
@@ -89,7 +89,7 @@ const FilterBar = ({ handleSearch, searchQuery, setSearchQuery, location, setLoc
         <Grid item xs={4}>
           <Box
             sx={{ pl: "30px", display: "flex", alignItems: "center", justifyContent: "space-evenly", bgcolor: themes[themeMode].bgColor.component, borderTopRightRadius: "4px", borderBottomRightRadius: "4px", height: "81px", border: "1px solid", borderColor: themes[themeMode].input.border }} >
-            <CheckBox />
+            <CheckBox isChecked={isChecked} setIsChecked={setIsChecked}/>
             <Typography sx={{ fontWeight: "bold", fontSize: "17px", color: themes[themeMode].text.normal }}>Full Time Only</Typography>
             <Button onClick={handleSearch} sx={{
               backgroundColor: "#5964E0", padding: "15px 30px", fontSize: "16px", textTransform: "capitalize",
