@@ -15,7 +15,8 @@ const Home = () => {
   const [location, setLocation] = useState('') //filter
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [modalOpen, setModalOpen] = useState(false);
-  
+  const [isChecked, setIsChecked] = useState(true)
+
   //modal control
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
@@ -63,10 +64,10 @@ const Home = () => {
     <div style={{ backgroundColor: themes[themeMode].bgColor.app, minHeight: "1000px" }}>
       <Container maxWidth="xl" sx={{ position: "relative" }}>
         {screenWidth > 768 ?
-          <FilterBar handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} location={location} setLocation={setLocation} /> :
+          <FilterBar isChecked={isChecked} setIsChecked={setIsChecked} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} location={location} setLocation={setLocation} /> :
           <>
-            <MobileFilterBar handleOpen={handleOpen} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <MyModal handleSearch={handleSearch} location={location} setLocation={setLocation} open={modalOpen} handleClose={handleClose} />
+            <MobileFilterBar  handleOpen={handleOpen} handleSearch={handleSearch} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <MyModal isChecked={isChecked} setIsChecked={setIsChecked} handleSearch={handleSearch} location={location} setLocation={setLocation} open={modalOpen} handleClose={handleClose} />
           </>
         }
         <Grid sx={{ mt: "70px", position: "relative" }} container rowSpacing={15} columnSpacing={10}>
